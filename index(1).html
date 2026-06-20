@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b1f3a" />
+  <title>Ulaştırma Hizmetleri Alanı | Lojistik Dalı</title>
+  <meta name="description" content="Gölcük İhsaniye Ticaret MTAL Ulaştırma Hizmetleri Alanı Lojistik Dalı mobil tanıtım sitesi." />
+  <style>
+    :root{
+      --navy:#0b1f3a;
+      --navy-2:#102f57;
+      --gold:#f7b731;
+      --orange:#ff7a18;
+      --sky:#dff3ff;
+      --mint:#dff8ee;
+      --paper:#f8fafc;
+      --white:#ffffff;
+      --ink:#142033;
+      --muted:#64748b;
+      --line:rgba(255,255,255,.18);
+      --shadow:0 18px 45px rgba(5, 18, 39, .18);
+      --radius:24px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color:var(--ink);
+      background:linear-gradient(180deg,#f8fbff 0%,#eef6ff 45%,#fff 100%);
+      overflow-x:hidden;
+    }
+    a{color:inherit;text-decoration:none}
+    .app{
+      width:min(100%, 520px);
+      margin:0 auto;
+      min-height:100vh;
+      background:#fff;
+      box-shadow:0 0 60px rgba(15, 23, 42,.14);
+      position:relative;
+    }
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:30;
+      background:rgba(11,31,58,.92);
+      backdrop-filter: blur(16px);
+      color:#fff;
+      border-bottom:1px solid rgba(255,255,255,.12);
+    }
+    .topbar-inner{
+      display:flex;align-items:center;justify-content:space-between;
+      gap:14px;padding:12px 16px;
+    }
+    .brand{display:flex;align-items:center;gap:10px;min-width:0}
+    .logo-mark{
+      width:42px;height:42px;border-radius:15px;
+      display:grid;place-items:center;
+      background:linear-gradient(135deg,var(--gold),var(--orange));
+      color:#0b1f3a;font-weight:900;box-shadow:0 8px 20px rgba(247,183,49,.35);
+      flex:0 0 auto;
+    }
+    .brand small{display:block;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#cbd5e1;line-height:1.2}
+    .brand strong{display:block;font-size:13px;line-height:1.15;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:310px}
+    .menu-btn{
+      border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:#fff;
+      border-radius:14px;padding:10px 12px;font-weight:800;cursor:pointer;
+    }
+    nav{
+      display:none;
+      padding:0 16px 14px;
+      grid-template-columns:1fr 1fr;
+      gap:8px;
+    }
+    nav.open{display:grid}
+    nav a{
+      padding:11px 12px;border:1px solid rgba(255,255,255,.14);border-radius:14px;
+      background:rgba(255,255,255,.08);font-size:13px;color:#e2e8f0;
+    }
+    .hero{
+      color:#fff;
+      padding:28px 18px 24px;
+      background:
+        radial-gradient(circle at 80% 14%, rgba(247,183,49,.38) 0 18%, transparent 35%),
+        radial-gradient(circle at 8% 70%, rgba(0,190,255,.2) 0 18%, transparent 40%),
+        linear-gradient(145deg,#071a32 0%,#0b1f3a 55%,#113966 100%);
+      position:relative;overflow:hidden;
+    }
+    .hero:before{
+      content:"";position:absolute;inset:0;opacity:.16;
+      background-image:
+        linear-gradient(30deg, transparent 0 44%, rgba(255,255,255,.6) 45%, transparent 46%),
+        linear-gradient(150deg, transparent 0 46%, rgba(255,255,255,.55) 47%, transparent 48%);
+      background-size:110px 90px;
+    }
+    .hero-content{position:relative;z-index:1}
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      border:1px solid rgba(255,255,255,.22);
+      background:rgba(255,255,255,.1);border-radius:999px;
+      padding:8px 12px;font-size:12px;color:#e0f2fe;
+    }
+    .hero h1{
+      margin:16px 0 10px;
+      font-size:34px;line-height:.98;letter-spacing:-.04em;
+    }
+    .hero h1 span{color:var(--gold)}
+    .hero p{margin:0;color:#dbeafe;line-height:1.6;font-size:15px}
+    .hero-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}
+    .btn{
+      display:flex;align-items:center;justify-content:center;gap:8px;
+      border-radius:17px;padding:13px 14px;font-weight:850;font-size:14px;
+      border:1px solid transparent;
+    }
+    .btn.primary{background:linear-gradient(135deg,var(--gold),var(--orange));color:#0b1f3a;box-shadow:0 12px 26px rgba(255,122,24,.28)}
+    .btn.ghost{border-color:rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:#fff}
+    .transport-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:22px}
+    .transport-strip div{
+      min-height:76px;border-radius:20px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);
+      display:grid;place-items:center;text-align:center;font-size:12px;color:#e2e8f0;padding:8px;
+    }
+    .transport-strip b{display:block;font-size:23px;margin-bottom:5px}
+    section{padding:26px 18px}
+    .section-title{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:15px}
+    .eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.16em;color:var(--orange);font-weight:900;margin-bottom:6px}
+    h2{font-size:25px;line-height:1.05;margin:0;letter-spacing:-.035em;color:#0b1f3a}
+    .lead{font-size:15px;line-height:1.7;color:#475569;margin:0 0 14px}
+    .card{
+      background:#fff;border:1px solid #e5edf6;border-radius:var(--radius);box-shadow:0 14px 34px rgba(15, 23, 42,.08);
+      padding:18px;overflow:hidden;position:relative;
+    }
+    .card.soft{background:linear-gradient(180deg,#ffffff,#f7fbff)}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .info-card{
+      padding:16px;border-radius:22px;background:#f8fbff;border:1px solid #e7eff8;
+      min-height:154px;
+    }
+    .info-card .icon{font-size:28px;margin-bottom:10px}
+    .info-card h3{margin:0 0 7px;font-size:16px;color:#0b1f3a}
+    .info-card p{margin:0;color:#64748b;line-height:1.5;font-size:13px}
+    .process{
+      display:flex;gap:10px;overflow-x:auto;padding:4px 2px 12px;scroll-snap-type:x mandatory;
+    }
+    .process::-webkit-scrollbar{height:7px}.process::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:99px}
+    .step{
+      flex:0 0 184px;scroll-snap-align:start;border-radius:24px;padding:16px;
+      background:linear-gradient(180deg,#0b1f3a,#113966);color:#fff;min-height:178px;position:relative;overflow:hidden;
+    }
+    .step:after{content:"";position:absolute;width:90px;height:90px;border-radius:50%;background:rgba(247,183,49,.16);right:-30px;bottom:-24px}
+    .step .num{width:34px;height:34px;border-radius:13px;background:var(--gold);color:#0b1f3a;font-weight:900;display:grid;place-items:center;margin-bottom:16px}
+    .step h3{margin:0 0 8px;font-size:17px}.step p{margin:0;color:#dbeafe;font-size:13px;line-height:1.5}
+    .accordion{display:grid;gap:10px}
+    details{background:#fff;border:1px solid #e5edf6;border-radius:20px;box-shadow:0 10px 26px rgba(15,23,42,.05);overflow:hidden}
+    summary{list-style:none;cursor:pointer;padding:15px 16px;font-weight:900;color:#0b1f3a;display:flex;align-items:center;justify-content:space-between;gap:10px}
+    summary::-webkit-details-marker{display:none}
+    summary:after{content:"+";width:28px;height:28px;border-radius:11px;background:#eef6ff;display:grid;place-items:center;color:var(--orange);font-size:20px;line-height:1;flex:0 0 auto}
+    details[open] summary:after{content:"−"}
+    details p{margin:0;padding:0 16px 16px;color:#64748b;line-height:1.58;font-size:14px}
+    .timeline{position:relative;display:grid;gap:13px}
+    .work-card{display:grid;grid-template-columns:54px 1fr;gap:13px;align-items:start;background:#fff;border:1px solid #e6eef7;border-radius:22px;padding:14px;box-shadow:0 10px 28px rgba(15,23,42,.06)}
+    .work-card .wicon{width:54px;height:54px;border-radius:18px;background:linear-gradient(135deg,#fff4c7,#dff3ff);display:grid;place-items:center;font-size:26px}
+    .work-card h3{margin:0 0 6px;font-size:16px;color:#0b1f3a}.work-card p{margin:0;color:#64748b;font-size:13px;line-height:1.5}
+    .career-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .career{border-radius:20px;padding:14px;background:#0b1f3a;color:#fff;min-height:108px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+    .career:nth-child(even){background:#102f57}.career b{font-size:24px}.career span{font-size:13px;font-weight:800;line-height:1.25;color:#e2e8f0}
+    .student-check{display:grid;gap:10px;margin-top:12px}
+    .check{display:flex;gap:10px;align-items:flex-start;background:#f8fbff;border:1px solid #e7eff8;padding:13px;border-radius:18px;color:#334155;font-size:14px;line-height:1.45}
+    .check b{color:var(--orange)}
+    .gallery{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .gallery-item{min-height:138px;border-radius:22px;padding:14px;display:flex;flex-direction:column;justify-content:space-between;color:#fff;overflow:hidden;position:relative;background:#0b1f3a}
+    .gallery-item:nth-child(2){background:linear-gradient(145deg,#ff7a18,#f7b731);color:#0b1f3a}.gallery-item:nth-child(3){background:linear-gradient(145deg,#113966,#0ea5e9)}.gallery-item:nth-child(4){background:linear-gradient(145deg,#0f766e,#14b8a6)}
+    .gallery-item b{font-size:28px}.gallery-item span{font-weight:900;font-size:14px;line-height:1.2}.gallery-item small{opacity:.85;font-weight:700;margin-top:6px}
+    .cta{
+      padding:24px 18px 28px;background:linear-gradient(145deg,#071a32,#0b1f3a);color:#fff;
+    }
+    .contact-card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:26px;padding:18px;box-shadow:0 16px 36px rgba(0,0,0,.14)}
+    .contact-card h2{color:#fff}.contact-list{display:grid;gap:11px;margin:16px 0 0}.contact-line{display:flex;gap:11px;align-items:flex-start;color:#dbeafe;font-size:14px;line-height:1.45}.contact-line b{font-size:20px;line-height:1}
+    .footer{padding:16px 18px 28px;background:#071a32;color:#94a3b8;text-align:center;font-size:12px;line-height:1.5}
+    .bottom-actions{position:sticky;bottom:0;z-index:20;display:grid;grid-template-columns:1fr 1fr;background:rgba(255,255,255,.92);backdrop-filter:blur(16px);border-top:1px solid #e2e8f0;padding:10px 12px;gap:10px}
+    .bottom-actions a{border-radius:16px;padding:12px;text-align:center;font-weight:900;font-size:13px}.bottom-actions a:first-child{background:#0b1f3a;color:#fff}.bottom-actions a:last-child{background:linear-gradient(135deg,var(--gold),var(--orange));color:#0b1f3a}
+    .quiz{display:grid;gap:12px}.quiz-box{background:#f8fbff;border:1px solid #e7eff8;border-radius:22px;padding:15px}.quiz-options{display:grid;gap:8px;margin-top:10px}.quiz-options button{border:1px solid #dbe7f3;background:#fff;border-radius:15px;padding:11px;text-align:left;font-weight:800;color:#334155}.quiz-options button.correct{border-color:#16a34a;background:#dcfce7}.quiz-options button.wrong{border-color:#dc2626;background:#fee2e2}.quiz-result{font-size:14px;color:#475569;font-weight:800;min-height:22px}
+    @media(min-width:521px){body{padding:24px}.app{border-radius:34px;overflow:hidden}.topbar{border-radius:34px 34px 0 0}.bottom-actions{border-radius:0 0 34px 34px}}
+    @media(max-width:360px){.hero h1{font-size:30px}.grid-2,.career-grid,.gallery{grid-template-columns:1fr}.hero-actions{grid-template-columns:1fr}.transport-strip{grid-template-columns:1fr 1fr}.brand strong{max-width:220px}}
+  </style>
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand" href="#anasayfa" aria-label="Anasayfa">
+          <div class="logo-mark">LH</div>
+          <div>
+            <small>GİMTAL</small>
+            <strong>Ulaştırma Hizmetleri Alanı</strong>
+          </div>
+        </a>
+        <button class="menu-btn" id="menuBtn" aria-label="Menüyü aç">Menü</button>
+      </div>
+      <nav id="mobileNav">
+        <a href="#alan">Alanı Tanı</a>
+        <a href="#dersler">Dersler</a>
+        <a href="#surec">Lojistik Süreç</a>
+        <a href="#calismalar">Çalışmalar</a>
+        <a href="#kariyer">Kariyer</a>
+        <a href="#iletisim">İletişim</a>
+      </nav>
+    </header>
+
+    <section class="hero" id="anasayfa">
+      <div class="hero-content">
+        <div class="badge">📦 Lojistik • Taşıma • Depolama • Gümrük</div>
+        <h1>Geleceğin <span>lojistik</span> profesyonelleri burada yetişiyor.</h1>
+        <p>Gölcük İhsaniye Ticaret Mesleki ve Teknik Anadolu Lisesi Ulaştırma Hizmetleri Alanı Lojistik Dalı mobil tanıtım sayfası.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#alan">Alanı Tanı</a>
+          <a class="btn ghost" href="#surec">Süreci Keşfet</a>
+        </div>
+        <div class="transport-strip" aria-label="Taşıma türleri">
+          <div><b>🚚</b>Kara Yolu</div>
+          <div><b>✈️</b>Hava Yolu</div>
+          <div><b>🚢</b>Deniz Yolu</div>
+          <div><b>🚆</b>Demir Yolu</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="alan">
+      <div class="section-title">
+        <div>
+          <div class="eyebrow">Alan Tanıtımı</div>
+          <h2>Ulaştırma Hizmetleri Alanı Lojistik Dalı nedir?</h2>
+        </div>
+      </div>
+      <p class="lead">Ulaştırma Hizmetleri Alanı Lojistik Dalı; ürünlerin üretimden tüketiciye ulaşana kadar geçen taşıma, depolama, sevkiyat, gümrük ve dağıtım süreçlerini öğreten mesleki eğitim alanıdır.</p>
+      <div class="grid-2">
+        <article class="info-card"><div class="icon">🚚</div><h3>Taşımacılık</h3><p>Kara yolu, deniz yolu, hava yolu ve demir yolu taşımacılığının temel işleyişini tanır.</p></article>
+        <article class="info-card"><div class="icon">🏬</div><h3>Depolama</h3><p>Mal kabul, stok takibi, raf düzeni, sipariş hazırlama ve sevkiyat süreçlerini öğrenir.</p></article>
+        <article class="info-card"><div class="icon">🧾</div><h3>Gümrük</h3><p>Dış ticaret, gümrük işlemleri ve lojistik belgeler hakkında temel bilgi kazanır.</p></article>
+        <article class="info-card"><div class="icon">🗺️</div><h3>Planlama</h3><p>Ürün, zaman, maliyet, rota ve teslimat yönetimi konularında mesleki bakış açısı geliştirir.</p></article>
+      </div>
+    </section>
+
+    <section id="dersler">
+      <div class="section-title">
+        <div>
+          <div class="eyebrow">Derslerimiz</div>
+          <h2>Alan derslerine genel bakış</h2>
+        </div>
+      </div>
+      <div class="accordion">
+        <details open><summary>Temel Ulaştırma</summary><p>Öğrenciler lojistik, ulaştırma, depolama, ambalajlama, tedarik ve taşıma kavramlarını öğrenir. Alanın temel işleyişini tanır.</p></details>
+        <details><summary>Taşıma Modelleri</summary><p>Kara yolu, deniz yolu, hava yolu, demir yolu ve karma taşımacılık sistemlerinin avantajlarını ve kullanım alanlarını inceler.</p></details>
+        <details><summary>Depo Yönetimi</summary><p>Mal kabul, ürün yerleştirme, stok takibi, raf düzeni, sipariş toplama, paketleme ve sevkiyat hazırlığı süreçlerini öğrenir.</p></details>
+        <details><summary>Gümrük</summary><p>Gümrük işlemlerinde kullanılan temel belgeler, dış ticaret süreçleri ve ithalat-ihracat uygulamaları hakkında bilgi sahibi olur.</p></details>
+        <details><summary>Depo Programı</summary><p>Dijital depo takip sistemleri, ürün kayıtları, stok hareketleri ve barkodlu işlem mantığı hakkında uygulamalı beceri kazanır.</p></details>
+        <details><summary>Teslim ve Ödeme Şekilleri</summary><p>Dış ticarette kullanılan teslim şekilleri ve ödeme yöntemlerini öğrenerek ticari süreçlerin nasıl yürütüldüğünü kavrar.</p></details>
+        <details><summary>İşletmelerde Mesleki Eğitim</summary><p>12. sınıfta öğrenciler işletmelerde mesleki eğitim görerek gerçek iş ortamını tanır ve sektörel deneyim kazanır.</p></details>
+      </div>
+    </section>
+
+    <section id="surec">
+      <div class="section-title">
+        <div>
+          <div class="eyebrow">İnteraktif Süreç</div>
+          <h2>Lojistik süreci tanı</h2>
+        </div>
+      </div>
+      <p class="lead">Bir ürünün işletmeye girişinden müşteriye teslimine kadar geçen temel adımları inceleyin.</p>
+      <div class="process">
+        <article class="step"><div class="num">1</div><h3>Mal Kabul</h3><p>Gelen ürünler kontrol edilir, sayılır, belgelerle karşılaştırılır ve kayıt altına alınır.</p></article>
+        <article class="step"><div class="num">2</div><h3>Depolama</h3><p>Ürünler uygun raflara, alanlara ve kategorilere göre düzenli şekilde yerleştirilir.</p></article>
+        <article class="step"><div class="num">3</div><h3>Stok Takibi</h3><p>Ürün miktarları, giriş-çıkış hareketleri ve stok durumları düzenli olarak takip edilir.</p></article>
+        <article class="step"><div class="num">4</div><h3>Sipariş Hazırlama</h3><p>Sipariş listesine göre ürünler toplanır, kontrol edilir ve paketleme alanına alınır.</p></article>
+        <article class="step"><div class="num">5</div><h3>Paketleme</h3><p>Ürünler taşıma sırasında zarar görmeyecek şekilde ambalajlanır ve etiketlenir.</p></article>
+        <article class="step"><div class="num">6</div><h3>Sevkiyat</h3><p>Hazırlanan ürünler doğru araçla, doğru adrese ve doğru zamanda gönderilir.</p></article>
+      </div>
+    </section>
+
+    <section id="calismalar">
+      <div class="section-title">
+        <div>
+          <div class="eyebrow">Etkinlik ve Uygulamalar</div>
+          <h2>Yaptığımız çalışmalar</h2>
+        </div>
+      </div>
+      <div class="timeline">
+        <article class="work-card"><div class="wicon">🎪</div><div><h3>Alan Tanıtım Standı</h3><p>Afişler, broşürler, maket araçlar, koli, barkod, ambalajlama malzemeleri ve tanıtım materyalleriyle alanımız tanıtıldı.</p></div></article>
+        <article class="work-card"><div class="wicon">📦</div><div><h3>Depo ve Sevkiyat Uygulamaları</h3><p>Mal kabul, depolama, sipariş toplama, paketleme ve sevkiyat süreçlerini anlatan uygulama materyalleri hazırlandı.</p></div></article>
+        <article class="work-card"><div class="wicon">💻</div><div><h3>Dijital Eğitim Materyalleri</h3><p>Öğrencilerin derse ilgisini artırmak için interaktif harita oyunları, depo simülasyonları ve dijital ders içerikleri geliştirildi.</p></div></article>
+        <article class="work-card"><div class="wicon">🗺️</div><div><h3>Pano ve Broşür Çalışmaları</h3><p>Ulaşım, lojistik, afet farkındalığı ve alan tanıtımı konularında görsel pano, afiş ve broşür çalışmaları yapıldı.</p></div></article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <div>
+          <div class="eyebrow">Galeri</div>
+          <h2>Alanımızdan başlıklar</h2>
+        </div>
+      </div>
+      <div class="gallery">
+        <div class="gallery-item"><b>🚚</b><span>Taşıma ve Rota Planlama</span><small>Kara yolu, sevkiyat ve teslimat</small></div>
+        <div class="gallery-item"><b>📦</b><span>Depo Yönetimi</span><small>Mal kabul, raf, stok ve barkod</small></div>
+        <div class="gallery-item"><b>🧾</b><span>Gümrük ve Belgeler</span><small>Evrak, kontrol ve dış ticaret</small></div>
+        <div class="gallery-item"><b>💻</b><span>Dijital Uygulamalar</span><small>Oyun, simülasyon ve etkileşim</small></div>
+      </div>
+    </section>
+
+    <section id="kariyer">
+      <div class="section-title">
+        <div>
+          <div class="eyebrow">Gelecek</div>
+          <h2>Mezun olan öğrenciler nerelerde çalışabilir?</h2>
+        </div>
+      </div>
+      <div class="career-grid">
+        <div class="career"><b>🏢</b><span>Lojistik Firmaları</span></div>
+        <div class="career"><b>🚛</b><span>Kargo Şirketleri</span></div>
+        <div class="career"><b>🏬</b><span>Depo ve Dağıtım Merkezleri</span></div>
+        <div class="career"><b>🧾</b><span>Gümrük ve Dış Ticaret</span></div>
+        <div class="career"><b>🛒</b><span>E-Ticaret Operasyonları</span></div>
+        <div class="career"><b>🏭</b><span>Üretim İşletmeleri</span></div>
+      </div>
+      <div class="card soft" style="margin-top:14px">
+        <p class="lead" style="margin:0">Öğrencilerimiz yükseköğretime devam ederek lojistik, dış ticaret, işletme, ulaştırma ve tedarik zinciri yönetimi gibi alanlarda kendilerini geliştirebilirler.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <div>
+          <div class="eyebrow">Öğrenciye Mesaj</div>
+          <h2>Bu alan sana göre mi?</h2>
+        </div>
+      </div>
+      <div class="student-check">
+        <div class="check"><b>✓</b><span>Planlı ve düzenli çalışmayı seviyorsan,</span></div>
+        <div class="check"><b>✓</b><span>Taşıma, kargo, depo ve ticaret konularına ilgi duyuyorsan,</span></div>
+        <div class="check"><b>✓</b><span>Teknolojiyi kullanarak iş süreçlerini yönetmek istiyorsan,</span></div>
+        <div class="check"><b>✓</b><span>Sorumluluk almayı ve ekip çalışmasını seviyorsan, lojistik alanı senin için doğru tercih olabilir.</span></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <div>
+          <div class="eyebrow">Mini Test</div>
+          <h2>Kendini dene</h2>
+        </div>
+      </div>
+      <div class="quiz card">
+        <div class="quiz-box">
+          <strong>Bir ürünü depoya girişte sayma, kontrol etme ve kayıt altına alma işlemine ne denir?</strong>
+          <div class="quiz-options" id="quizOptions">
+            <button data-answer="wrong">Sevkiyat</button>
+            <button data-answer="correct">Mal Kabul</button>
+            <button data-answer="wrong">Pazarlama</button>
+            <button data-answer="wrong">Faturalandırma</button>
+          </div>
+        </div>
+        <div class="quiz-result" id="quizResult"></div>
+      </div>
+    </section>
+
+    <section class="cta" id="iletisim">
+      <div class="contact-card">
+        <div class="eyebrow">İletişim</div>
+        <h2>Gölcük İhsaniye Ticaret Mesleki ve Teknik Anadolu Lisesi</h2>
+        <div class="contact-list">
+          <div class="contact-line"><b>📍</b><span>İhsaniye Çiftlik Mahallesi Şahin Caddesi No 15<br>Gölcük / Kocaeli</span></div>
+          <div class="contact-line"><b>📞</b><span>0262 435 62 64</span></div>
+          <div class="contact-line"><b>🌐</b><span>ihsaniyemtal.meb.k12.tr</span></div>
+          <div class="contact-line"><b>📷</b><span>@gimtal_resmi</span></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="bottom-actions">
+      <a href="#dersler">Dersleri İncele</a>
+      <a href="#iletisim">İletişim</a>
+    </div>
+    <footer class="footer">
+      Ulaştırma Hizmetleri Alanı Lojistik Dalı mobil tanıtım sayfası.<br>
+      QR kod ile broşür, pano ve tanıtım standlarında kullanılabilir.
+    </footer>
+  </main>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    menuBtn.addEventListener('click', () => {
+      mobileNav.classList.toggle('open');
+      menuBtn.textContent = mobileNav.classList.contains('open') ? 'Kapat' : 'Menü';
+    });
+    mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      mobileNav.classList.remove('open');
+      menuBtn.textContent = 'Menü';
+    }));
+
+    const quizOptions = document.getElementById('quizOptions');
+    const quizResult = document.getElementById('quizResult');
+    quizOptions.addEventListener('click', (e) => {
+      if(e.target.tagName !== 'BUTTON') return;
+      quizOptions.querySelectorAll('button').forEach(btn => {
+        btn.disabled = true;
+        if(btn.dataset.answer === 'correct') btn.classList.add('correct');
+      });
+      if(e.target.dataset.answer === 'correct') {
+        quizResult.textContent = 'Doğru! Mal kabul, depoya gelen ürünlerin kontrol edilip kayıt altına alınmasıdır.';
+      } else {
+        e.target.classList.add('wrong');
+        quizResult.textContent = 'Cevap: Mal Kabul. Gelen ürünler önce kontrol edilir ve kayıt altına alınır.';
+      }
+    });
+  </script>
+</body>
+</html>
